@@ -33,8 +33,8 @@ function EmployeeLogin() {
         employeeId: employee.employee_id,
         name: employee.personal_info.name,
         email: employee.personal_info.email,
-        role: employee.role,
-        department: employee.department
+        role: employee.employment_info.job_title,
+        department: employee.employment_info.department
       }));
       
       // Success message (optional)

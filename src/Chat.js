@@ -34,7 +34,9 @@ function Chat() {
       </button>
 
       {<div style={{ marginTop: "20px" }}>
-          <b>AI:</b> {userInput=="" &&"Hi! How are you feeling today?" || reply}
+          <b>AI:</b> {reply.split('\n').map((line, idx) => (
+    <p key={idx}>{line}</p>
+  ))}
         </div>
       }
     </div>

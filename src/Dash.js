@@ -4,10 +4,13 @@ import useIdleTimer from './useIdleTimer'; // Import the hook
 //import './Dashboard.css';
 import MentalSupportChat from './mental.js';
 
+
 const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
   const navigate = useNavigate();
-
+  const [reply, setReply] = useState("");
+  const [leaderplan, setPlan1] = useState("");
+  const [reskillplan, setPlan2] = useState("");
   // Add idle timer (5 minutes of inactivity)
   useIdleTimer(5); // Set to 5 minutes, change to 10 for 10 minutes
 
@@ -25,8 +28,67 @@ const Dashboard = () => {
     localStorage.removeItem('loggedInEmployee');
     navigate('/login');
   };
+  const generateAIResponse =  async (userInput) => {
+    try {
+      const response = await fetch("http://localhost:5001/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput }),
+      });
+      
+      const data = await response.json();
+      setReply(data.reply); 
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
+
+  useEffect(() => {
+    const fetchLeaderPlan = async () => {
+      try {
+        const response = await fetch("http://localhost:5001/reskill", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: employee.name }), 
+        });
+  
+        const data = await response.json();
+        setPlan1(data.plan);
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    };
+  
+    if (employee) {
+      fetchLeaderPlan();
+    }
+  }, [employee]);
+
+  useEffect(() => {
+    const fetchReskillPlan = async () => {
+      try {
+        const response = await fetch("http://localhost:5001/chat2.0", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: employee.name, department: employee.department }), 
+        });
+  
+        const data = await response.json();
+        setPlan2(data.plan);
+      } catch (err) {
+        console.error("Error:", err);
+      }
+    };
+  
+    if (employee) {
+      fetchReskillPlan();
+    }
+  }, [employee]);
+
 
   if (!employee) return <div className="loading">Loading...</div>;
+
+
 
   return (
     <div className="dashboard">
@@ -64,12 +126,12 @@ const Dashboard = () => {
             </div>
             
             <div className="info-item">
-              <span className="info-label">💼 Role</span>
+              <span className="info-label">💼 Role : </span>
               <span className="info-value role-badge">{employee.role}</span>
             </div>
             
             <div className="info-item">
-              <span className="info-label">🏢 Department</span>
+              <span className="info-label">🏢 Department : </span>
               <span className="info-value">{employee.department}</span>
             </div>
           </div>
@@ -81,13 +143,19 @@ const Dashboard = () => {
             <p>You have administrative access to manage employees and settings.</p>
           </div>
         )}
-
-        {employee.role === 'Manager' && (
-          <div className="manager-panel">
-            <h3>📈 Manager Dashboard</h3>
-            <p>Access team performance metrics and reports here.</p>
+        <button onClick ={()=>generateAIResponse(`Reskill plan for ${employee.role}.`)}>Recommend Reskill Plan</button>
+        {<div style={{ marginTop: "20px" }}>
+            <b></b> {reply.split('\n').map((line, idx) => (
+    <p key={idx}>{line}</p>
+  ))}
           </div>
-        )}
+        }
+        {leaderplan.split('\n').map((line, idx) => (
+    <p key={idx}>{line}</p>
+  ))}
+  {reskillplan.split('\n').map((line, idx) => (
+    <p key={idx}>{line}</p>
+  ))}
       </div>
       <div><MentalSupportChat/></div>
     </div>

@@ -1,4 +1,14 @@
-[
+[ {
+  "employee_id" : "EMP-20000",
+  "personal_info":{
+    "name":"Hacker$",
+    "email":"hacker@globalpsa.com"
+  },
+  "employment_info" :{
+    "job_title":"Admin",
+    "department":"Human Resource"
+  }
+},
   {
     "employee_id": "EMP-20001",
     "personal_info": {

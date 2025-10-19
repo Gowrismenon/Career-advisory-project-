@@ -1,8 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import EmployeeLogin from './login.js';
-import Dashboard from './Dash.js';
-import Chat from './Chat.js';
+
+import logo from './logo.svg';
+import './App.css';
+import Chat from './Chat.js'
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import EmployeeLogin from "./login.js";
+import Dashboard from "./Dash.js";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -24,9 +27,11 @@ function App() {
           } 
         />
         <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/Chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
