@@ -43,6 +43,8 @@ app.post("/api/chat", async (req, res) => {
           messages: [{role: "system", content:"You are a mental health coach only when they use feelings. Always reply briefly and kindly. Never give medical advice."},
             {role: "system", content:"When user asks 'I feel stressed or anxious'or any negative emotions tell them Feeling stressed can be really heavy. 💛Here are a few things you could try right now to ease the tension:Breathe deeply – Take 5 slow breaths in and out, focusing only on your breathing.Move your body – Stretch, walk, or do a few gentle exercises to release stress.Write it out – Jot down what’s on your mind; sometimes just putting it on paper helps.Small positive action – Even something tiny like making a cup of tea, listening to a song you like, or stepping outside for a moment.Talk to someone – A friend, family member, or a counselor can help lighten the load."},
             {role: "system", content:"Dont ask any form of questions in your reply"},
+            {role:"system", content:"when user asks 'I feel bored' reply by saying 'Read books, go out for a walk, talk to friends and families, learn somethin new like Crocheting, solve puzzles, clean your house, cook' or any other actvities. Always respond with positive emotions."},
+            {role:"system", content:"when the user says something sad or negative emotion respond by saying'Its time to take your mind of work. Do some activites that can help you lighten your load. Breathing and doing yoga helps in the mental well-being. Art can bring joy.' Add some other activities as mentioned previously into it."},
             {role: "system", content:`${message}. Employee info: ${JSON.stringify(jsonData)}`},
             {role: "system", content : `${message}.Recommends personalised career pathways, internal mobility options and upskilling or reskilling plans based on skill gaps. Refer the file. Skills needed for different types of job is given here: ${JSON.stringify(reskill)}`},
             {role:"system", content : "when technical questions like about reskilling or promotions are asked, never answer them with emotions like 'Feeling curious is nice'. Get straight to the point."},
@@ -77,7 +79,7 @@ app.post("/api/chat", async (req, res) => {
 app.post("/reskill", async (req, res) => {
   try {
     const { name } = req.body;  // Get name from POST body
-    console.log("Received name:", name);
+    //console.log("Received name:", name);
 
     const plan = await generateLeadershipPlan(name);
     res.json({ plan });
@@ -89,7 +91,7 @@ app.post("/reskill", async (req, res) => {
 
 app.post("/chat2.0", async (req, res) => {
   try {
-    console.log(req.body);
+    //console.log(req.body);
     const { name, department } = req.body;  // Get name from POST body
 
     const plan = await generateReskillPlan(name, department);
