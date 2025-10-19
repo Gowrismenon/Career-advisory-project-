@@ -1,0 +1,36 @@
+{
+  "Information Technology": [
+    {
+      "role": "Cloud Solutions Architect",
+      "skill": "Multi-cloud architecture (AWS, Azure, GCP)\nInfrastructure as Code (Terraform, CloudFormation, Azure Bicep)\nDevOps & CI/CD pipelines (Docker, Kubernetes, Jenkins, GitHub Actions)\nNetworking & load balancing (VPCs, subnets, API gateways)\nMonitoring and cost optimization (CloudWatch, Azure Cost Management, FinOps basics)\nAutomation and scripting (Python, Bash, PowerShell)\nBasic compliance understanding (GDPR, ISO 27001)"
+    },
+    {
+      "role": "Cloud Security Specialist",
+      "skill": "Cloud security fundamentals and shared responsibility model\nIdentity and Access Management (IAM, Azure AD, OAuth, MFA)\nNetwork security (firewalls, VPNs, Zero Trust, NACLs)\nEncryption and key management (AWS KMS, Azure Key Vault, GCP KMS)\nThreat detection and incident response (SIEM tools, SOAR automation)\nCompliance and governance frameworks (ISO 27001, NIST CSF, SOC 2, CIS Benchmarks)\nDevSecOps and container security (Trivy, Aqua, Checkov)\nSecurity automation with Python and Terraform Sentinel policies"
+    },
+    {
+      "role": "Cybersecurity Analyst",
+      "skill": "Vulnerability scanning and remediation\nNetwork security monitoring\nThreat intelligence and incident response\nCybersecurity forensics\nRisk management and compliance\nSIEM and security alert triage\nEndpoint security and identity access management"
+    }
+  ],
+  "Finance": [
+    {
+      "role": "Finance Manager (FP&A)",
+      "skill": "Financial planning and analysis (FP&A)\nBudgeting and forecasting\nFinancial modeling\nCost management and variance analysis\nRisk management\nTerminal reporting\nESG finance and carbon accounting\nData visualization (Power BI, Excel dashboards)"
+    },
+    {
+      "role": "Treasury Analyst",
+      "skill": "Cash flow forecasting and liquidity management\nTreasury Management Systems (Kyriba, FIS Quantum, SAP Treasury)\nForeign exchange (FX) risk management and hedging\nFinancial risk modeling and scenario analysis\nVendor and banking relationship management\nAutomation with Python or R for treasury analytics\nPower BI or Tableau for treasury reporting\nClaims and insurance management"
+    }
+  ],
+  "Human Resource": [
+    {
+      "role": "Senior HR Business Partner",
+      "skill": "Talent management and succession planning\nStaff development and engagement\nCompensation management\nHR Information Systems / Technology (HRIS)\nLeadership development\nOrganizational development\nChange & transformation management\nStakeholder & partnership management"
+    },
+    {
+      "role": "People Analytics Lead",
+      "skill": "Data analytics and visualization (Power BI, Tableau, Visier)\nHR metrics and KPI design (attrition, engagement, productivity)\nStatistical modeling and predictive HR analytics (R, Python)\nWorkday or SAP SuccessFactors analytics integration\nSurvey analytics and employee sentiment analysis\nAI tools for talent and performance insights\nStorytelling with data for HR decision-making\nChange management and digital HR transformation"
+    }
+  ]
+}
