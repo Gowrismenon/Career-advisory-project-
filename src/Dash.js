@@ -3,14 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import useIdleTimer from './useIdleTimer'; // Import the hook
 //import './Dashboard.css';
 import MentalSupportChat from './mental.js';
-
+import Lead from "./Lead.js";
+import Reskill from "./Reskill.js";
 
 const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
   const navigate = useNavigate();
   const [reply, setReply] = useState("");
-  const [leaderplan, setPlan1] = useState("");
-  const [reskillplan, setPlan2] = useState("");
   // Add idle timer (5 minutes of inactivity)
   useIdleTimer(5); // Set to 5 minutes, change to 10 for 10 minutes
 
@@ -43,47 +42,7 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchLeaderPlan = async () => {
-      try {
-        const response = await fetch("http://localhost:5001/reskill", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: employee.name }), 
-        });
   
-        const data = await response.json();
-        setPlan1(data.plan);
-      } catch (err) {
-        console.error("Error:", err);
-      }
-    };
-  
-    if (employee) {
-      fetchLeaderPlan();
-    }
-  }, [employee]);
-
-  useEffect(() => {
-    const fetchReskillPlan = async () => {
-      try {
-        const response = await fetch("http://localhost:5001/chat2.0", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: employee.name, department: employee.department }), 
-        });
-  
-        const data = await response.json();
-        setPlan2(data.plan);
-      } catch (err) {
-        console.error("Error:", err);
-      }
-    };
-  
-    if (employee) {
-      fetchReskillPlan();
-    }
-  }, [employee]);
 
 
   if (!employee) return <div className="loading">Loading...</div>;
@@ -150,12 +109,10 @@ const Dashboard = () => {
   ))}
           </div>
         }
-        {leaderplan.split('\n').map((line, idx) => (
-    <p key={idx}>{line}</p>
-  ))}
-  {reskillplan.split('\n').map((line, idx) => (
-    <p key={idx}>{line}</p>
-  ))}
+        <h1>LeaderShip Qualities to be developed : </h1>
+        <div><Lead employee = {employee} /></div>
+        <h1>Career PathWay : </h1>
+        <div><Reskill employee = {employee} /></div>
       </div>
       <div><MentalSupportChat/></div>
     </div>
