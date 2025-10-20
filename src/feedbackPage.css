@@ -58,6 +58,7 @@
   color: #28a745;
   margin-top: 20px;
 }
+
 /* Full screen feedback submitted message */
 .feedback-submitted-screen {
   display: flex;
@@ -69,20 +70,40 @@
 
 .feedback-submitted-card {
   background-color: #fff;
-  padding: 40px 50px;
+  padding: 60px 80px; /* increased padding */
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* stronger shadow */
+  max-width: 600px; /* wider card */
+  width: 90%; /* responsive */
 }
 
 .feedback-submitted-card h2 {
   color: #28a745;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* increased spacing */
+  font-size: 32px; /* bigger title */
 }
 
 .feedback-submitted-card p {
-  font-size: 16px;
+  font-size: 18px; /* slightly bigger text */
   color: #333;
+  margin-bottom: 25px;
+}
+
+.feedback-submitted-card button {
+  padding: 12px 30px; /* larger button */
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.feedback-submitted-card button:hover {
+  background-color: #218838;
 }
 
 
