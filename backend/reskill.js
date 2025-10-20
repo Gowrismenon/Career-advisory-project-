@@ -78,6 +78,7 @@ async function generateReskillPlan(name, department) {
       if (x == emp.employment_info.job_title) continue;
       const endYear = startYear + 1;
       plan += `${c}. ${x} (${startYear} - ${endYear} years)\n  Skills Required:\n ${y}\n`;
+      if (i!=gaps.length-1) plan+= `  ↓ \n`;
       c++;
       startYear = endYear;
     }
