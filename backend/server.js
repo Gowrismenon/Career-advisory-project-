@@ -7,6 +7,10 @@ import fs from "fs";
 import path from "path";
 import generateLeadershipPlan from "./leadership.js";
 import generateReskillPlan from "./reskill.js";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load JSON file synchronously (at server start)
 const dataPath = path.resolve("./backend/employees.json"); // replace with your JSON file path
@@ -103,16 +107,19 @@ app.post("/chat2.0", async (req, res) => {
 });
 
 
-app.get("/api/chat", (req, res) => {
-  res.send("GET route exists — use POST for chat");
-});
-app.get("/reskill", (req, res) => {
-  res.send("GET route exists — use POST for chat");
-});
-app.get("/chat2.0", (req, res) => {
-  res.send("GET route exists — use POST for chat");
-});
-app.listen(5001, () => console.log("Server running on http://localhost:5001"));
+const buildPath = path.join(__dirname, "build");
+if (fs.existsSync(buildPath)) {
+  app.use(express.static(buildPath));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(buildPath, "index.html"));
+  });
+} else {
+  console.warn("⚠️ Build folder not found. Run `npm run build` first.");
+}
+
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
 
 
