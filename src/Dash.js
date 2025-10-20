@@ -6,6 +6,7 @@ import MentalSupportChat from './mental.js';
 import Lead from "./Lead.js";
 import Reskill from "./Reskill.js";
 
+
 const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
   const navigate = useNavigate();
@@ -56,11 +57,18 @@ const Dashboard = () => {
           <h1>📊 Employee Portal</h1>
         </div>
         <div className="user-section">
-          <span className="user-name">{employee.name}</span>
-          <button onClick={handleLogout} className="logout-btn" >
-            Logout 🚪
+           <span className="user-name">{employee.name}</span>
+            <button 
+            onClick={() => navigate('/feedback')} 
+            className="feedback-btn"
+            >
+              Feedback 📝
+            </button>
+          <button onClick={handleLogout} className="logout-btn">
+          Logout 🚪
           </button>
         </div>
+
       </header>
 
       <div className="dashboard-content">

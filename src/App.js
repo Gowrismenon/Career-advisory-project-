@@ -1,4 +1,3 @@
-
 import logo from './logo.svg';
 import './App.css';
 import Chat from './Chat.js'
@@ -6,6 +5,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import EmployeeLogin from "./login.js";
 import Dashboard from "./Dash.js";
+import FeedbackPage from "./feedbackPage.js"; // ✅ Capitalized
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -26,12 +26,19 @@ function App() {
             </ProtectedRoute>
           } 
         />
+        <Route 
+          path="/feedback" 
+          element={
+            <ProtectedRoute>
+              <FeedbackPage />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/Chat" element={<Chat />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-

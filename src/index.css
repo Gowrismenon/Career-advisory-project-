@@ -250,3 +250,19 @@ body {
             color: white;
             transform: scale(1.05);
         }
+        .feedback-btn {
+            background: #48bb78; /* Green shade for feedback */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 10px; /* space before logout */
+        }
+
+        .feedback-btn:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }

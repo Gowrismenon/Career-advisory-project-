@@ -1,0 +1,88 @@
+/* feedbackPage.css */
+
+.feedback-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.feedback-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-form input,
+.feedback-form textarea,
+.feedback-form select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feedback-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.feedback-form button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.feedback-form button:hover {
+  background-color: #218838;
+}
+
+.feedback-success {
+  text-align: center;
+  font-size: 18px;
+  color: #28a745;
+  margin-top: 20px;
+}
+/* Full screen feedback submitted message */
+.feedback-submitted-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full viewport height */
+  background: linear-gradient(135deg, #6fa3d8 0%, #5b8fc7 100%);
+}
+
+.feedback-submitted-card {
+  background-color: #fff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.feedback-submitted-card h2 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.feedback-submitted-card p {
+  font-size: 16px;
+  color: #333;
+}
+
+
