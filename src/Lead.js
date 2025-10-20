@@ -24,11 +24,12 @@ function Lead({employee}) {
         fetchLeaderPlan();
       }
     }, [employee]);
-    return <div>
+    
+    return <ul class="quality-list">
         {leaderplan.split('\n').map((line, idx) => (
-            <p key={idx}>{line}</p>
+            <li class="quality-item" key={idx}>{line}</li>
         ))}
-    </div>;
+    </ul>;
 };
 
 export default Lead;

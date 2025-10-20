@@ -24,9 +24,9 @@ function Reskill({employee}) {
         }
       }, [employee]);
 
-      return <div>
+      return <div className='pathway-card'>
         {reskillplan.split('\n').map((line, idx) => (
-            <p key={idx}>{line}</p>
+            <div className='skills-section' key={idx}>{line}</div>
         ))}
       </div>;
 }

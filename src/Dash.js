@@ -55,9 +55,9 @@ const Dashboard = () => {
         <div className="header-left">
           <h1>📊 Employee Portal</h1>
         </div>
-        <div className="header-right">
-          <span className="user-badge">{employee.name}</span>
-          <button onClick={handleLogout} className="logout-button" >
+        <div className="user-section">
+          <span className="user-name">{employee.name}</span>
+          <button onClick={handleLogout} className="logout-btn" >
             Logout 🚪
           </button>
         </div>
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
       <div className="dashboard-content">
         <div className="welcome-card">
-          <h2>👋 Welcome back, {employee.name}!</h2>
+          <h2 className='welcome-titlee'>👋 Welcome back, {employee.name}!</h2>
           <p className="welcome-subtitle">Here's your employee information</p>
           
           <div className="employee-info-grid">
@@ -94,6 +94,7 @@ const Dashboard = () => {
               <span className="info-value">{employee.department}</span>
             </div>
           </div>
+        <button className='reskill-badge' onClick ={()=>generateAIResponse(`Reskill plan for ${employee.role}.`)}>Recommend Reskill Plan</button>
         </div>
 
         {employee.role === 'Admin' && (
@@ -102,17 +103,23 @@ const Dashboard = () => {
             <p>You have administrative access to manage employees and settings.</p>
           </div>
         )}
-        <button onClick ={()=>generateAIResponse(`Reskill plan for ${employee.role}.`)}>Recommend Reskill Plan</button>
-        {<div style={{ marginTop: "20px" }}>
+        
+        {<div className="section-card" style={{ marginTop: "20px" }}>
             <b></b> {reply.split('\n').map((line, idx) => (
     <p key={idx}>{line}</p>
   ))}
           </div>
         }
-        <h1>LeaderShip Qualities to be developed : </h1>
+
+        <div className='section-card'>
+        <h3 className='section-title'> LeaderShip Qualities to be developed : </h3>
         <div><Lead employee = {employee} /></div>
-        <h1>Career PathWay : </h1>
+        </div>
+
+        <div className='section-card'>
+        <h3 className='section-title'>Career PathWay : </h3>
         <div><Reskill employee = {employee} /></div>
+        </div>
       </div>
       <div><MentalSupportChat/></div>
     </div>
