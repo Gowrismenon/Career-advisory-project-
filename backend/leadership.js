@@ -65,9 +65,9 @@ async function generateLeadershipPlan(name) {
       //console.log(curr);
         if (curr[3] < 0.8 && curr[3] >= 0.6){
             const x = curr[2].split(":");
-            plan += `${c}. Strengthen ${leadershipSkills[i].skill.split(":")[0]}${
-              ` from ${x[1]} to ${leadershipSkills[i].skill.split(":")[1]}` 
-            }\n`;
+            plan+= `${c}. Strengthen ${leadershipSkills[i].skill.split(":")[0]}`
+            if (x[1] != leadershipSkills[i].skill.split(":")[1]) plan+=`${` from ${x[1]} to ${leadershipSkills[i].skill.split(":")[1]}` }\n`;
+            else plan+="\n";
             c++;
             continue;
         } else if (curr[3] < 0.6) {
